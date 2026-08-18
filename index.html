@@ -712,6 +712,22 @@ document.getElementById('ano').textContent = new Date().getFullYear();
     });
   });
 })();
+
+/* Google Ads - conversão de Contato no clique do WhatsApp (AW-18345546380) */
+(function(){
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18345546380/pc3qCI-H5OMcEIyl66tE',
+          'value': 1.0,
+          'currency': 'BRL',
+          'transport_type': 'beacon'
+        });
+      }
+    });
+  });
+})();
 </script>
 
 </body>
