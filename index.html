@@ -142,9 +142,28 @@ header{
   mask-image:radial-gradient(700px 500px at 72% 26%, #000 0%, transparent 76%);
   -webkit-mask-image:radial-gradient(700px 500px at 72% 26%, #000 0%, transparent 76%);
 }
-.hero::after{
-  content:"";position:absolute;right:-8%;top:-22%;width:min(620px,72vw);height:min(620px,72vw);
-  border:1px solid rgba(255,255,255,.07);border-radius:50%;z-index:0;pointer-events:none;
+/* ---- cena de fundo do hero: luzes desfocadas + cartão em perspectiva ---- */
+.hero-art{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.hero-art .glow{position:absolute;border-radius:50%;}
+.hero-art .g1{width:min(680px,86vw);aspect-ratio:1;right:-12%;top:-24%;
+  background:radial-gradient(circle, rgba(79,179,172,.34), rgba(79,179,172,0) 66%)}
+.hero-art .g2{width:min(560px,74vw);aspect-ratio:1;right:2%;bottom:-30%;
+  background:radial-gradient(circle, rgba(224,160,60,.20), rgba(224,160,60,0) 64%)}
+.hero-art .g3{width:min(480px,66vw);aspect-ratio:1;left:-16%;bottom:-24%;
+  background:radial-gradient(circle, rgba(86,108,168,.34), rgba(86,108,168,0) 66%)}
+.hero-art .g4{width:min(200px,30vw);aspect-ratio:1;left:44%;top:-14%;
+  background:radial-gradient(circle, rgba(255,255,255,.10), rgba(255,255,255,0) 62%)}
+.hero-art .card3d{
+  position:absolute;right:-3%;top:-9%;width:min(330px,34vw);
+  transform:rotate(-19deg);opacity:.9;
+}
+.hero-art .ring{
+  position:absolute;right:-8%;top:-22%;width:min(620px,72vw);aspect-ratio:1;
+  border:1px solid rgba(255,255,255,.07);border-radius:50%;
+}
+@media(max-width:939px){
+  .hero-art .card3d{right:-16%;top:auto;bottom:2%;width:min(300px,62vw);opacity:.6;transform:rotate(-14deg)}
+  .hero-art .g2{bottom:-14%;right:-14%}
 }
 .hero .wrap{position:relative;z-index:2}
 .hero-grid{display:grid;grid-template-columns:1fr;gap:clamp(34px,5vw,54px);align-items:center}
@@ -379,6 +398,39 @@ html.js .rv.in{opacity:1;transform:none}
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="topo">
+  <div class="hero-art" aria-hidden="true">
+    <span class="glow g1"></span><span class="glow g2"></span>
+    <span class="glow g3"></span><span class="glow g4"></span>
+    <span class="ring"></span>
+    <svg class="card3d" viewBox="0 0 420 264" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="cf" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ffffff" stop-opacity=".13"/>
+          <stop offset="1" stop-color="#ffffff" stop-opacity=".03"/>
+        </linearGradient>
+        <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#E8C270" stop-opacity=".70"/>
+          <stop offset="1" stop-color="#B9913F" stop-opacity=".45"/>
+        </linearGradient>
+      </defs>
+      <rect x="2" y="2" width="416" height="260" rx="26" fill="url(#cf)"
+            stroke="rgba(255,255,255,.20)" stroke-width="1.5"/>
+      <rect x="2" y="52" width="416" height="34" fill="rgba(9,13,22,.34)"/>
+      <rect x="38" y="118" width="56" height="42" rx="7" fill="url(#chip)"/>
+      <path d="M38 128h56M38 140h56M38 150h56M56 118v42M76 118v42"
+            stroke="rgba(30,36,50,.42)" stroke-width="1.4"/>
+      <g fill="rgba(255,255,255,.24)">
+        <rect x="38" y="192" width="62" height="13" rx="6.5"/>
+        <rect x="112" y="192" width="62" height="13" rx="6.5"/>
+        <rect x="186" y="192" width="62" height="13" rx="6.5"/>
+        <rect x="260" y="192" width="62" height="13" rx="6.5"/>
+      </g>
+      <g stroke="rgba(255,255,255,.26)" stroke-width="2.4" fill="none" stroke-linecap="round">
+        <path d="M330 126a20 20 0 0 1 0 30"/><path d="M344 116a34 34 0 0 1 0 50"/>
+        <path d="M358 106a48 48 0 0 1 0 70"/>
+      </g>
+    </svg>
+  </div>
   <div class="wrap">
     <div class="hero-grid">
       <div>
